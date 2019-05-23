@@ -1,8 +1,8 @@
-const chai = require('chai')
+const chai     = require('chai')
 const chaiHttp = require('chai-http')
-const expect = chai.expect
-const app = require('../app')
-const baseUrl = 'http://localhost:3000'
+const expect   = chai.expect
+const app      = require('../app')
+const baseUrl  = 'http://localhost:3000'
 const mongoose = require("mongoose");
 chai.use(chaiHttp)
 
@@ -13,7 +13,7 @@ describe('API /users', () => {
         .post('/users/signup')
         .send({
           username: 'david',
-          email: 'google@david.com',
+          email   : 'google@david.com',
           password: 'qwerty'
         })
         .end((err, res) => {
