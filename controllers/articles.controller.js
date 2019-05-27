@@ -11,11 +11,11 @@ module.exports = {
         }, (err, article) => {
             if (err) {
                 res.status(400).send({
-                    message: 'failed to get article'
+                    message: 'Failed to get article'
                 })
             } else {
                 res.status(200).send({
-                    message: 'article was succesfuly got',
+                    message: 'Article was succesfuly got',
                     data: article
                 })
 
@@ -29,13 +29,13 @@ module.exports = {
             .populate('comments.user')
             .then(response => {
                 return res.status(200).json({
-                    message: 'successfully retrieved all articles',
+                    message: 'Successfully retrieved all articles',
                     data: response
                 })
             })
             .catch(err => {
                 return res.status(400).json({
-                    message: 'failed retrieved all articles',
+                    message: 'Failed retrieved all articles',
                     err: err.message
                 })
             })
@@ -47,15 +47,14 @@ module.exports = {
             })
             .populate('author')
             .then(data => {
-                console.log(data, 'coba');
                 return res.status(200).json({
-                    message: `succeed get article by id`,
+                    message: `Succeed get article by id`,
                     data
                 })
             })
             .catch(err => {
                 return res.status(400).json({
-                    message: `failed get article by id`,
+                    message: `Failed get article by id`,
                     err
                 })
             })
@@ -70,13 +69,13 @@ module.exports = {
             })
             .then(response => {
                 return res.status(200).json({
-                    message: 'successfully add new article',
+                    message: 'Successfully add new article',
                     data: response
                 })
             })
             .catch(err => {
                 return res.status(400).json({
-                    message: 'failed add new post ',
+                    message: 'Failed add new post ',
                     err: err.message
                 })
             })
@@ -91,21 +90,21 @@ module.exports = {
                 })
             .then(response => {
                 return res.status(200).json({
-                    message: "articles fields have been updated",
+                    message: "Articles fields have been updated",
                     data: response
                 })
             })
             .catch(err => {
                 return res.status(400).json({
-                    message: "failed to update articles",
+                    message: "Failed to update articles",
                     error: err
                 })
             })
     },
     addComment: (req, res) => {
-        console.log(req.body.comment, '==========');
-        const newComment = {
-            comments
+        let newComment = {
+            comment,
+            author
         } = req.body
         Articles
             .findByIdAndUpdate({
@@ -135,12 +134,12 @@ module.exports = {
             })
             .then(response => {
                 return res.status(200).json({
-                    message: "successfully deleted articles"
+                    message: "Successfully deleted articles"
                 })
             })
             .catch(err => {
                 return res.status(400).json({
-                    message: "failed to delete articles record",
+                    message: "Failed to delete articles record",
                     error: err
                 })
             })

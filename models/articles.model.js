@@ -9,7 +9,8 @@ const articlesSchema = new Schema({
     content : String,
     category: String,
     comments: [{
-        comments: String
+        comment: String,
+        author: String
     }]
 }, {
     timestamps: true

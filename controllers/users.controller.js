@@ -24,9 +24,9 @@ module.exports = {
                         let token = jwt.sign({
                                 id: userData._id
                             },
-                            'secret')
+                            process.env.SECRET)
                         return res.status(200).json({
-                            message: 'Sign in success',
+                            message: 'Sign in succesful',
                             data   : {
                                 id      : userData._id,
                                 name    : userData.name,
@@ -61,10 +61,9 @@ module.exports = {
                 password: req.body.password,
             })
             .then(data => {
-                console.log(data, '====woiiii');
                 let token = jwt.sign({
                     id: data._id
-                }, 'secret');
+                }, process.env.SECRET);
 
                 return res.status(200)
                     .json({
